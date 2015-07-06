@@ -174,6 +174,59 @@ The catch here is to remember that it is **possible to pass in 0 values**, just 
 * helloWithNames()
 * // Nobody here!
 
+*/
 
+/*:
+## Inout Parameters
+
+With inout parameters, you have the ability to manipulate external variables (aka pass by reference):
+
+* var name1 = "Mr. Bryan"
+* var name2 = "Mr. Abrash"
+
+* func nameSwap(inout name1: String, inout name2: String) {
+* let oldName1 = name1
+* name1 = name2
+* name2 = oldName1
+* }
+
+* nameSwap(&name1, &name2)
+
+* name1
+* // Mr. Abrash
+
+* name2
+* // Mr. Bryan
+
+This can be used for doing error handling in Swift. Check out this amazing article on the subject. [Swift Programming Language Book on the topic.](http://owensd.io/2014/08/22/error-handling-take-two.html)
+
+*/
+
+/*:
+## Generic Parameter Types
+
+I’m not going to get too much into generics in this assignment, but here is a very simple example for how you can make a function accept parameters of different types while making sure that both parameters are of the same type: I really recommend you taking the time to read [Generic Programming in Swift.](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html)
+
+* func valueSwap<T>(inout value1: T, inout value2: T) {
+* let oldValue1 = value1
+* value1 = value2
+* value2 = oldValue1
+* }
+
+* var name1 = "Mr. Bryan"
+* var name2 = "Mr. Abrash"
+
+* valueSwap(&name1, &name2)
+
+* name1 // Mr. Abrash
+* name2 // Mr. Bryan
+
+* var number1 = 2
+* var number2 = 5
+
+* valueSwap(&number1, &number2)
+
+* number1 // 5
+* number2 // 2
 */
 
