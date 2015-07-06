@@ -57,9 +57,11 @@ One thing we have to be aware of when writing Swift code. Is how parameters work
 
 Working with the above function, it's difficult to know which each parameter is. Swift has a concept called external parameter name to clarify sometimes confusing syntax.
 
-*   func hello(fromName name: String) {
-*       println("\(name) says hello to you!")
-*   }
+  
+func hello(fromName name: String) {
+    println("\(name) says hello to you!")
+
+}
 
 *   hello(fromName: "Kwame Bryan")
 
@@ -230,3 +232,47 @@ I’m not going to get too much into generics in this assignment, but here is a 
 * number2 // 2
 */
 
+/*:
+## Variable Parameters
+
+Parameters that are passed to function are constant. Meaning, that can't be changed within the scope of the function. If you would like to change that behaviour, you need to use the **var** keyword for your parameters:
+
+* var name = "Mr. Bryan"
+
+* func appendNumbersToName(var name: String, #maxNumber: Int) -> String {
+* for i in 0..<maxNumber {
+* name += String(i + 1)
+* }
+* return name
+* }
+
+* appendNumbersToName(name, maxNumber:5)
+*  // Mr. Bryan 12345
+
+name
+
+* // Mr. Bryan
+
+Note that this is different than an inout parameter — variable parameters do not change the external passed-in variable!
+
+*/
+
+
+/*:
+
+## Functions as Parameters
+    In Swift, funtions can be passed around just like variables, As an example, a function cna have another function passed in as a parameter:
+
+* func luckyNumberForName(name: String, #lotteryHandler: (String, Int) -> String) -> String {
+* let luckyNumber = Int(arc4random() % 100)
+* return lotteryHandler(name, luckyNumber)
+* }
+
+* func defaultLotteryHandler(name: String, luckyNumber: Int) -> String {
+* return "\(name), your lucky number is \(luckyNumber)"
+* }
+
+* luckyNumberForName("Mr. Bryan", lotteryHandler: defaultLotteryHandler)
+* // Mr. Bryan, your lucky number is 38
+
+*/
