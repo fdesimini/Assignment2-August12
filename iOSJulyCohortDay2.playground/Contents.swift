@@ -55,10 +55,125 @@ One thing we have to be aware of when writing Swift code. Is how parameters work
 
 *   hello("Kwame Bryan", 39, "Courtice")
 
-Working with the above function, it's difficult to know which each parameter is. 
+Working with the above function, it's difficult to know which each parameter is. Swift has a concept called external parameter name to clarify sometimes confusing syntax.
 
+*   func hello(fromName name: String) {
+*       println("\(name) says hello to you!")
+*   }
 
+*   hello(fromName: "Kwame Bryan")
+
+### Have a go. Create a function that uses the **external parameter name** concept. In your challenge, instead of a string use an Integer value.
+*/
+
+/*:
+Now, you may be asking. What if the name of the variable is the name I want for the external parameter name. Do I need to write this twice? Lucky for us, this is not the case. Swift has a handy operator we can use for these types of situations. Looking back at our previous example.
+
+* func hello(#name: String) {
+*   println("Hello \(name)")
+* }
+We now get:
+* hello(name:"Kwame Bryan")
+*/
+
+/*:
+ ## More on Parameters in Swift
+
+Compared to Objective-C, Swift has a lot of extra options for what type of parameters can be passed in. Here are some examples.
+
+## Variadic Parameters
+
+In Swift, there is a new concept of optional types:
+
+**Optionals say either “there is a value, and it equals x” or “there isn’t a value at all.” Optionals are similar to using nil with pointers in Objective-C, but they work for any type, not just classes. Optionals are safer and more expressive than nil pointers in Objective-C and are at the heart of many of Swift’s most powerful features.**
+
+To indicate that a parameter type is optional (can be nil), just add a question mark after the type specification:
+
+* func myFuncWithOptionalType(parameter: String?) {
+*       // function execution
+* }
+
+myFuncWithOptionalType("someString")
+myFuncWithOptionalType(nil)
+
+One caveat, that you should be aware of is that when working with optional parameters. You are forced to unwrap.
+
+*   func myFuncWithOptionalType(optionalParameter: String?) {
+*       if let unwrappedOptional = optionalParameter {
+*           println("The optional has a value! It's \(unwrappedOptional)")
+*      } else {
+*           println("The optional is nil!")
+*       }
+*   }
+
+* myFuncWithOptionalType("someString")
+* // The optional has a value! It's someString
+
+* myFuncWithOptionalType(nil)
+* // The optional is nil
+
+## Parameters with Default Values
+
+* func hello(name: String = "you") {
+* println("hello, \(name)")
+* }
+
+* hello(name: "Kwame Bryan")
+* // hello, Kwame Bryan
+
+* hello()
+* // hello, you
+
+Note that a parameter with a default value automatically has an external parameter name.
+
+And since parameters with a default value can be skipped when the function is called, it is best practice to put all your parameters with default values at the end of a function’s parameter list. 
+
+Here is a note from the [Swift Programming Language Book on the topic.](https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html):
+Place parameters with default values at the end of a function’s parameter list. This ensures that all calls to the function use the same order for their non-default arguments, and makes it clear that the same function is being called in each case.
+I’m a huge fan of default parameters, mostly because it makes code easy to change and backward compatible. You might start out with two parameters for your specific use case at the time, such as a function to configure a custom UITableViewCell, and if another use case comes up that requires another parameter (such as a different text color for your cell’s label), just add a new parameter with a default value — all the other places where this function has already been called will be fine, and the new part of your code that needs the parameter can just pass in the non-default value!
 
 */
 
+/*:
+
+## Variadic Parameters
+
+Variadic parameters are simply a more readable version of passing in an array of elements. In fact, if you were to look at the type of the internal parameter names in the below example, you’d see that it is of type [String] (array of strings):
+
+* func helloWithNames(names: String...) {
+* for name in names {
+* println("Hello, \(name)")
+* }
+* }
+
+* // 2 names
+* helloWithNames("Mr. Bryan", "Mr. Lattner")
+* // Hello, Mr. Bryan
+* // Hello, Mr. Lattner
+
+* // 4 names
+
+* helloWithNames("Batman", "Superman", "Wonder Woman", "Catwoman")
+* // Hello, Batman
+* // Hello, Superman
+* // Hello, Wonder Woman
+* // Hello, Catwoman
+
+The catch here is to remember that it is **possible to pass in 0 values**, just like it is possible to pass in an empty array, so don’t forget to check for the empty array if needed:
+
+* func helloWithNames(names: String...) {
+*  if names.count > 0 {
+* for name in names {
+* println("Hello, \(name)")
+* }
+* } else {
+* println("Nobody here!")
+* }
+* }
+
+* helloWithNames()
+* // Nobody here!
+
+
+*/
 
