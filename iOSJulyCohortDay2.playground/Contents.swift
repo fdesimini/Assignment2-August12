@@ -11,8 +11,8 @@ First, let's refresh ourselves with the creation of a simple function
 *       println("hello, world")
 *   }
 
-* The func keyword denotes that this is a function.
-* The name of this function is mySimpleFunction.
+* The **func** keyword denotes that this is a function.
+* The **name** of this function is mySimpleFunction.
 * There are no parameters passed in — hence the empty ( ).
 * There is no return value.
 * The function execution happens between the { }.
@@ -274,5 +274,40 @@ Note that this is different than an inout parameter — variable parameters do n
 
 * luckyNumberForName("Mr. Bryan", lotteryHandler: defaultLotteryHandler)
 * // Mr. Bryan, your lucky number is 38
+
+*/
+
+
+
+/*:
+
+## Access Controls
+
+Swift has three levels of access controls:
+
+**Public** access enables entities to be used within any source file from their defining module, and also in a source file from another module that imports the defining module. You typically use public access when specifying the public interface to a framework.
+
+**Internal** access enables entities to be used within any source file from their defining module, but not in any source file outside of that module. You typically use internal access when defining an app’s or a framework’s internal structure.
+
+**Private** access restricts the use of an entity to its own defining source file. Use private access to hide the implementation details of a specific piece of functionality.
+
+By default, every function and variable is internal — if you want to change that, you have to use the private or public keyword in front of every single method and variable:
+
+
+* public func myPublicFunc() {
+
+* }
+
+* func myInternalFunc() {
+
+* }
+
+* private func myPrivateFunc() {
+
+* }
+
+* private func myOtherPrivateFunc() {
+
+* }
 
 */
