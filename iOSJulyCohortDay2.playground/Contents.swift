@@ -21,8 +21,11 @@ First, let's refresh ourselves with the creation of a simple function
 * Create a function that prints your name.
 * Create a function that takes your name as a parameter and prints your name
 */
+func printMyName(){
+    println("Frank Desimini")
+}
 
-
+printMyName()
 
 /*:
 
@@ -37,6 +40,16 @@ This new function, takes two parameters of type **String** and type **Int** the 
 ### Have a go, update this function so that it returns both the passed String and an Integer. This could be your name and your age.
 
 */
+
+var firstName:String = "Frank"
+var age:Int = 47
+
+func myFunctionName(name:String, age:Int) -> String {
+   return "Hello my name is \(name) and I ame \(age)"
+}
+
+myFunctionName(firstName, age)
+
 
 /*:
 
@@ -68,6 +81,12 @@ func hello(fromName name: String) {
 ### Have a go. Create a function that uses the **external parameter name** concept. In your challenge, instead of a string use an Integer value.
 */
 
+func deLaSoul(magicNumber number:Int){
+    println("\(number) is the magic number")
+}
+
+deLaSoul(magicNumber:3)
+
 /*:
 Now, you may be asking. What if the name of the variable is the name I want for the external parameter name. Do I need to write this twice? Lucky for us, this is not the case. Swift has a handy operator we can use for these types of situations. Looking back at our previous example.
 
@@ -77,6 +96,11 @@ Now, you may be asking. What if the name of the variable is the name I want for 
 We now get:
 * hello(name:"Kwame Bryan")
 */
+func deLaSoul2(#magicNumber:Int){
+    println("\(magicNumber) is the magic number")
+}
+
+deLaSoul2(magicNumber:3)
 
 /*:
  ## More on Parameters in Swift
